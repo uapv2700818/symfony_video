@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ technologie.nom }}{% endblock %}
+
+{% block body %}
+
+<span>ARCHIVE — TECHNOLOGIE</span>
+
+<h1>{{ technologie.nom }}</h1>
+
+<p>
+    {{ technologie.description }}
+</p>
+
+<hr>
+
+<h2>Souvenir du programmeur</h2>
+
+<p>
+    {{ technologie.contenu }}
+</p>
+
+<a class="button" href="{{ path('app_technologies') }}">
+    ← Retour aux technologies
+</a>
+
+{% endblock %}

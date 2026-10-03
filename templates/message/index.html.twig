@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Message{% endblock %}
+
+{% block body %}
+
+<div class="formulaire">
+
+    <h1>Envoyer un message</h1>
+
+    {{ form_start(form) }}
+
+        {{ form_widget(form) }}
+
+        <button type="submit">
+            Envoyer le message
+        </button>
+
+    {{ form_end(form) }}
+
+</div>
+
+{% endblock %}

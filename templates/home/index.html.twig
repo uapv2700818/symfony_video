@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Souvenirs.dev{% endblock %}
+
+{% block body %}
+
+<section class="accueil">
+
+    <p class="sur-titre">SOUVENIRS.DEV</p>
+
+    <h1>Quand le Web était encore jeune...</h1>
+
+    <p>
+        Asseyez-vous les enfants.
+        Aujourd'hui, je vais vous raconter comment nous développions
+        des applications Web à mon époque.
+    </p>
+
+    <p>
+        Vous connaissez Symfony ?
+        Pour vous, c'est peut-être une vieille technologie.
+        Pour nous, c'était déjà une manière moderne de construire
+        des applications Web.
+    </p>
+
+    <a class="bouton" href="{{ path('app_histoire') }}">
+        Écouter mon histoire
+    </a>
+
+</section>
+
+{% endblock %}

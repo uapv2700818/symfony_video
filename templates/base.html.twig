@@ -1,24 +1,119 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text><text y=%221.3em%22 x=%220.2em%22 font-size=%2276%22 fill=%22%23fff%22>sf</text></svg>">
-        {% block stylesheets %}
-        {% endblock %}
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Les souvenirs d'un développeur{% endblock %}</title>
 
-        {% block javascripts %}
-            {% block importmap %}{{ importmap('app') }}{% endblock %}
-        {% endblock %}
+    <style>
+        * {
+            box-sizing: border-box;
+        }
 
-        {% set frankenphp_hot_reload = app.request.server.get('FRANKENPHP_HOT_RELOAD') %}
-        {% if frankenphp_hot_reload %}
-        <meta name="frankenphp-hot-reload:url" content="{{ frankenphp_hot_reload }}">
-        <script src="https://cdn.jsdelivr.net/npm/idiomorph"></script>
-        <script src="https://cdn.jsdelivr.net/npm/frankenphp-hot-reload/+esm" type="module"></script>
-        {% endif %}
-    </head>
-    <body>
-        {% block body %}{% endblock %}
-    </body>
+        body {
+            margin: 0;
+            background: #111;
+            color: #e8e8e8;
+            font-family: Arial, sans-serif;
+        }
+
+        nav {
+            padding: 20px 8%;
+            border-bottom: 1px solid #333;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        nav a {
+            color: #aaa;
+            text-decoration: none;
+            margin-left: 25px;
+        }
+
+        nav a:hover {
+            color: white;
+        }
+
+        .logo {
+            color: #fff;
+            font-weight: bold;
+        }
+
+        main {
+            max-width: 1100px;
+            margin: auto;
+            padding: 80px 30px;
+        }
+
+        .hero {
+            min-height: 70vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .hero span {
+            color: #888;
+            font-family: monospace;
+        }
+
+        h1 {
+            font-size: 64px;
+            max-width: 800px;
+            margin: 20px 0;
+        }
+
+        p {
+            color: #aaa;
+            font-size: 18px;
+            line-height: 1.7;
+            max-width: 700px;
+        }
+
+        .button {
+            display: inline-block;
+            margin-top: 30px;
+            padding: 14px 22px;
+            border: 1px solid #555;
+            color: white;
+            text-decoration: none;
+            width: fit-content;
+        }
+
+        .button:hover {
+            background: white;
+            color: #111;
+        }
+
+        footer {
+            border-top: 1px solid #333;
+            padding: 30px 8%;
+            color: #666;
+        }
+    </style>
+</head>
+
+<body>
+
+<nav>
+    <div class="logo">/ souvenirs.dev</div>
+
+    <div>
+        <a href="{{ path('app_home') }}">Accueil</a>
+        <a href="{{ path('app_histoire') }}">Histoire</a>
+        <a href="{{ path('app_technologies') }}">Technologies</a>
+        <a href="#">Démonstration</a>
+        <a href="{{ path('app_message') }}">Message</a>
+    </div>
+</nav>
+
+<main>
+    {% block body %}{% endblock %}
+</main>
+
+<footer>
+    Une histoire racontée par un vieux développeur.
+</footer>
+{{ importmap('app') }}
+</body>
 </html>

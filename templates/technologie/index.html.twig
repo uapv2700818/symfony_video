@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Technologies{% endblock %}
+
+{% block body %}
+
+<h1>Les technologies du vieux programmeur</h1>
+
+<div data-controller="archive">
+
+    {% for technologie in technologies %}
+
+        <article>
+            <h2>
+                <a href="{{ path('app_technologie', {slug: technologie.slug}) }}">
+                    {{ technologie.nom }}
+                </a>
+            </h2>
+
+            <button
+                type="button"
+                data-action="click->archive#toggle"
+            >
+                Afficher / masquer
+            </button>
+
+            <div class="cache">
+                <p>{{ technologie.description }}</p>
+            </div>
+        </article>
+
+    {% endfor %}
+
+</div>
+
+{% endblock %}
