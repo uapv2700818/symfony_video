@@ -2,40 +2,41 @@
 
 namespace App\Controller;
 
-use App\Repository\TechnologieRepository;
+use App\Entity\Technologie;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 
-use Symfony\Component\HttpKernel\Attribute\Cache;
-
 class TechnologieController extends AbstractController
 {
     #[Route('/technologies', name: 'app_technologies')]
-    #[Cache(smaxage: 3600)]
-    public function index(TechnologieRepository $repository): Response
+    public function index(EntityManagerInterface $entityManager): Response
     {
-        $technologies = $repository->findAll();
+        $technologies = $entityManager
+            ->getRepository(Technologie::class)
+            ->findAll();
 
         return $this->render('technologie/index.html.twig', [
-            'technologies' => $technologies
+            'technologies' => $technologies,
         ]);
     }
 
     #[Route('/technologies/{slug}', name: 'app_technologie')]
-    public function show(string $slug, TechnologieRepository $repository): Response
-    {
-        $technologie = $repository->findOneBy([
-            'slug' => $slug
-        ]);
+    public function show(
+        string $slug,
+        EntityManagerInterface $entityManager
+    ): Response {
+        $technologie = $entityManager
+            ->getRepository(Technologie::class)
+            ->findOneBy(['slug' => $slug]);
 
         if (!$technologie) {
-            throw $this->createNotFoundException('Technologie introuvable');
+            throw $this->createNotFoundException();
         }
 
         return $this->render('technologie/show.html.twig', [
-            'technologie' => $technologie
+            'technologie' => $technologie,
         ]);
     }
 }
-
