@@ -6,11 +6,11 @@ Petit site pour **voir Symfony 8 en action** : routing, Twig, Doctrine, formulai
 
 | Branche | Contenu |
 |---------|---------|
-| `demo/explicative` | Ton neutre, orienté découverte : ce que fait chaque brique dans **ce** projet. |
+| `main` (défaut) | Ton neutre, orienté découverte : ce que fait chaque brique dans **ce** projet. |
 | `demo/papy` | Papy explique Symfony à ses petits-enfants (histoire + métaphores). |
 
 ```bash
-git checkout demo/explicative   # ou demo/papy
+git checkout demo/papy   # variante narrative uniquement
 php bin/console doctrine:fixtures:load --no-interaction
 ```
 
