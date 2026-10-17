@@ -4,33 +4,56 @@
 
 {% block body %}
 
-<h1>Les technologies du vieux programmeur</h1>
+<section class="liste-tech">
 
-<div data-controller="archive">
+    <p class="sur-titre">COMPOSANTS</p>
+    <h1>Symfony dans ce projet</h1>
 
-    {% for technologie in technologies %}
+    <p class="intro">
+        Chaque entrée est une entité Doctrine chargée par les fixtures.
+        Le titre mène à une fiche avec explications et extraits de code
+        du dépôt. Le bouton déplie le texte long ; le comportement repose
+        sur Stimulus (<code>data-controller="archive"</code>).
+    </p>
 
-        <article>
-            <h2>
-                <a href="{{ path('app_technologie', {slug: technologie.slug}) }}">
-                    {{ technologie.nom }}
-                </a>
-            </h2>
+    <div data-controller="archive">
 
-            <button
-                type="button"
-                data-action="click->archive#toggle"
-            >
-                Afficher / masquer
-            </button>
+        {% for technologie in technologies %}
 
-            <div class="cache">
-                <p>{{ technologie.description }}</p>
-            </div>
-        </article>
+            <article>
+                <h2>
+                    <a href="{{ path('app_technologie', {slug: technologie.slug}) }}">
+                        {{ technologie.nom }}
+                    </a>
+                </h2>
 
-    {% endfor %}
+                <p class="resume">{{ technologie.description }}</p>
 
-</div>
+                <button
+                    type="button"
+                    data-action="click->archive#toggle"
+                >
+                    Afficher / masquer le détail
+                </button>
+
+                <div class="cache detail-court">
+                    {% for paragraphe in technologie.contenu|split("\n\n") %}
+                        {% if paragraphe|trim %}
+                            <p>{{ paragraphe }}</p>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+            </article>
+
+        {% else %}
+            <p class="vide">
+                Aucune donnée. Exécutez
+                <code>php bin/console doctrine:fixtures:load --no-interaction</code>.
+            </p>
+        {% endfor %}
+
+    </div>
+
+</section>
 
 {% endblock %}

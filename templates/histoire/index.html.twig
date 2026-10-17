@@ -1,23 +1,80 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}L'histoire{% endblock %}
+{% block title %}Parcours du projet{% endblock %}
 
 {% block body %}
 
-<h1>Les souvenirs du vieux programmeur</h1>
+<section class="histoire">
 
-<p>
-    Quand j'étais jeune, le Web était bien différent...
-</p>
+    <p class="sur-titre">PARCOURS</p>
+    <h1>Organisation de cette démo</h1>
 
-<p>
-    À l'époque, les technologies que vous utilisez aujourd'hui
-    n'existaient pas encore sous cette forme.
-</p>
+    <p class="intro">
+        Cette page résume comment le site est monté et quels fichiers
+        regarder pour chaque fonctionnalité Symfony.
+    </p>
 
-<p>
-    Laissez-moi vous raconter comment Symfony permettait déjà
-    aux développeurs de construire des applications Web structurées.
-</p>
+    <section class="chapitre">
+        <h2>1. Routing et contrôleurs</h2>
+        <p>
+            Chaque URL du menu est déclarée dans
+            <code>src/Controller/</code> avec l’attribut
+            <code>#[Route(...)]</code>.
+            L’adresse <code>/</code> redirige vers <code>/home</code> pour
+            éviter la page par défaut du skeleton Symfony sur la racine.
+        </p>
+    </section>
+
+    <section class="chapitre">
+        <h2>2. Twig et templates</h2>
+        <p>
+            <code>templates/base.html.twig</code> contient la navigation
+            et le pied de page. Les autres vues étendent ce layout et
+            remplissent le bloc <code>body</code>.
+            Les liens utilisent <code>path('nom_de_route')</code> pour
+            rester synchronisés avec le routing.
+        </p>
+    </section>
+
+    <section class="chapitre">
+        <h2>3. Doctrine ORM</h2>
+        <p>
+            Les fiches « Technologies » et les messages du formulaire
+            sont des entités (<code>Technologie</code>, <code>Message</code>).
+            Les contrôleurs s’appuient sur
+            <code>EntityManagerInterface</code> plutôt que sur du SQL
+            écrit à la main. Les données initiales viennent des fixtures.
+        </p>
+    </section>
+
+    <section class="chapitre">
+        <h2>4. Formulaires et Messenger</h2>
+        <p>
+            La page <a href="{{ path('app_message') }}">/message</a> utilise
+            <code>MessageType</code> pour construire le formulaire.
+            Après validation, l’entité est persistée, puis un message
+            <code>MessageEnvoye</code> est dispatché : le handler écrit
+            le contenu dans <code>var/messages.log</code>.
+        </p>
+    </section>
+
+    <section class="chapitre">
+        <h2>5. AssetMapper et Stimulus</h2>
+        <p>
+            Les assets passent par <code>importmap('app')</code> dans le
+            layout. Sur la liste des technologies, le contrôleur Stimulus
+            <code>archive</code> gère l’affichage du texte long sans
+            recharger la page.
+        </p>
+    </section>
+
+    <p class="suite">
+        Le détail de chaque brique est dans
+        <a href="{{ path('app_technologies') }}">Technologies</a>.
+        En développement, le profiler (barre en bas) permet d’inspecter
+        routes, requêtes SQL et templates rendus.
+    </p>
+
+</section>
 
 {% endblock %}

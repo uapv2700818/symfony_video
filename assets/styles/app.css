@@ -139,3 +139,143 @@ button:hover {
 .formulaire button:hover {
     background: #333;
 }
+
+.sur-titre {
+    font-size: 13px;
+    letter-spacing: 3px;
+    color: #777;
+    margin: 0 0 12px;
+}
+
+.accueil .astuce a,
+.histoire a,
+.liste-tech a,
+.fiche-tech a {
+    color: #ccc;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+}
+
+.accueil code,
+.histoire code,
+.formulaire code,
+.liste-tech code,
+.fiche-tech code {
+    font-size: 0.92em;
+    color: #ddd;
+    background: #1a1a1a;
+    padding: 2px 6px;
+    border: 1px solid #333;
+}
+
+.histoire,
+.liste-tech,
+.fiche-tech {
+    max-width: 780px;
+}
+
+.histoire .intro,
+.liste-tech .intro,
+.formulaire .intro-form {
+    color: #aaa;
+    line-height: 1.75;
+    margin-bottom: 2rem;
+}
+
+.chapitre {
+    margin-bottom: 2.5rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid #2a2a2a;
+}
+
+.chapitre h2 {
+    font-size: 1.25rem;
+    margin: 0 0 0.75rem;
+    color: #eee;
+}
+
+.chapitre p,
+.suite {
+    color: #aaa;
+    line-height: 1.75;
+}
+
+article .resume {
+    color: #999;
+    margin: 0.5rem 0 1rem;
+}
+
+.detail-court p {
+    color: #888;
+    font-size: 0.95rem;
+    line-height: 1.65;
+}
+
+.fiche-tech .chapeau {
+    font-size: 1.15rem;
+    color: #bbb;
+    line-height: 1.6;
+}
+
+.fiche-tech .corps p {
+    color: #aaa;
+    line-height: 1.75;
+}
+
+.fiche-tech h1 {
+    font-size: 2.2rem;
+    margin: 0 0 1rem;
+}
+
+.exemple {
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid #333;
+}
+
+.exemple h2 {
+    font-size: 1rem;
+    color: #888;
+    margin: 0 0 1rem;
+}
+
+pre {
+    margin: 0;
+    padding: 1rem 1.1rem;
+    background: #0d0d0d;
+    border: 1px solid #333;
+    overflow-x: auto;
+    font-size: 0.85rem;
+    line-height: 1.5;
+}
+
+.retour {
+    margin-top: 2.5rem;
+}
+
+.retour a {
+    color: #aaa;
+}
+
+.flash {
+    padding: 12px 14px;
+    margin-bottom: 1.5rem;
+    border: 1px solid #444;
+    background: #1f2a1f;
+    color: #c8e6c9;
+}
+
+footer {
+    font-size: 0.9rem;
+    line-height: 1.5;
+}
+
+.footer-dev {
+    display: block;
+    margin-top: 6px;
+    color: #555;
+}
+
+.liste-tech .vide {
+    color: #888;
+}

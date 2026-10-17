@@ -6,14 +6,28 @@
 
 <div class="formulaire">
 
+    <p class="sur-titre">FORMULAIRE</p>
     <h1>Envoyer un message</h1>
+
+    <p class="intro-form">
+        Exemple de chaîne Symfony Form → validation → Doctrine → Messenger :
+        deux champs, envoi classique en POST. Le message est stocké en base ;
+        le bus déclenche un handler qui append aussi le texte dans
+        <code>var/messages.log</code>.
+    </p>
+
+    {% for label, messages in app.flashes %}
+        {% for message in messages %}
+            <p class="flash flash-{{ label }}">{{ message }}</p>
+        {% endfor %}
+    {% endfor %}
 
     {{ form_start(form) }}
 
         {{ form_widget(form) }}
 
         <button type="submit">
-            Envoyer le message
+            Envoyer
         </button>
 
     {{ form_end(form) }}

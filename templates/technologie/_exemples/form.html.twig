@@ -1,0 +1,11 @@
+<div class="exemple">
+    <h2>Dans ce repo</h2>
+    <pre><code>// MessageType.php
+$builder
+    ->add('nom')
+    ->add('contenu');
+
+// MessageController.php
+$form = $this->createForm(MessageType::class, $message);
+$form->handleRequest($request);</code></pre>
+</div>

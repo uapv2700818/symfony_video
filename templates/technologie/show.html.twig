@@ -1,153 +1,28 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}{{ technologie.nom }} - Souvenirs.dev{% endblock %}
+{% block title %}{{ technologie.nom }} — Découverte Symfony{% endblock %}
 
 {% block body %}
 
-<article>
+<article class="fiche-tech">
 
+    <p class="sur-titre">FICHE</p>
     <h1>{{ technologie.nom }}</h1>
 
-    <p>
-        {{ technologie.description }}
-    </p>
+    <p class="chapeau">{{ technologie.description }}</p>
 
-    {% if technologie.slug == 'twig' %}
+    <div class="corps">
+        {% for paragraphe in technologie.contenu|split("\n\n") %}
+            {% if paragraphe|trim %}
+                <p>{{ paragraphe }}</p>
+            {% endif %}
+        {% endfor %}
+    </div>
 
-        <h2>Twig</h2>
+    {% include 'technologie/_exemples/' ~ technologie.slug ~ '.html.twig' ignore missing %}
 
-        <p>
-            Twig est le moteur de templates utilisé par Symfony.
-            Il permet de séparer le PHP de l'HTML et d'utiliser une
-            syntaxe beaucoup plus simple dans les templates.
-        </p>
-
-        <h3>Exemple</h3>
-
-        <pre><code>&lt;?php echo $var ?&gt;</code></pre>
-
-        <p>Avec Twig :</p>
-
-        <pre><code>{{ '{{ var }}' }}</code></pre>
-
-        <p>
-            Twig permet également l'héritage des templates avec
-            un fichier base.html.twig commun à toutes les pages.
-        </p>
-
-    {% elseif technologie.slug == 'routing' %}
-
-        <h2>Le Routing</h2>
-
-        <p>
-            Le routing permet d'associer une URL à une action
-            d'un contrôleur.
-        </p>
-
-        <pre><code>#[Route('/blabla/{truc}')]</code></pre>
-
-        <p>
-            Symfony fait correspondre l'URL demandée avec la route
-            correspondante et appelle la méthode du contrôleur.
-        </p>
-
-    {% elseif technologie.slug == 'doctrine' %}
-
-        <h2>Doctrine ORM</h2>
-
-        <p>
-            Doctrine permet de gérer la base de données sous forme
-            d'objets PHP grâce aux entités.
-        </p>
-
-        <p>
-            Les tables deviennent des classes PHP et les colonnes
-            deviennent des propriétés.
-        </p>
-
-        <pre><code>php bin/console make:entity Article
-php bin/console make:migration
-php bin/console doctrine:migrations:migrate</code></pre>
-
-    {% elseif technologie.slug == 'autowiring' %}
-
-        <h2>Autowiring</h2>
-
-        <p>
-            Symfony peut instancier et injecter automatiquement
-            les dépendances nécessaires à une classe ou une méthode.
-        </p>
-
-        <pre><code>EntityManagerInterface $em</code></pre>
-
-    {% elseif technologie.slug == 'messenger' %}
-
-        <h2>Messenger</h2>
-
-        <p>
-            Messenger permet notamment de déplacer certaines tâches
-            en arrière-plan afin d'éviter de bloquer le chargement
-            de la page.
-        </p>
-
-        <p>
-            Par exemple, l'envoi d'un mail peut être traité
-            séparément du chargement de la page.
-        </p>
-
-    {% elseif technologie.slug == 'flex' %}
-
-        <h2>Symfony Flex</h2>
-
-        <p>
-            Symfony Flex facilite l'installation et la configuration
-            des fonctionnalités Symfony.
-        </p>
-
-        <pre><code>composer require symfony/mailer</code></pre>
-
-        <p>
-            Les recipes permettent ensuite de configurer automatiquement
-            une partie des fichiers nécessaires.
-        </p>
-
-    {% elseif technologie.slug == 'profiler' %}
-
-        <h2>Symfony Profiler</h2>
-
-        <p>
-            Le Symfony Profiler est un outil de développement qui
-            permet d'observer le fonctionnement de l'application.
-        </p>
-
-        <p>
-            Il permet notamment de consulter le temps de chargement,
-            la mémoire utilisée, les requêtes SQL, les routes et
-            les informations liées à Twig.
-        </p>
-
-    {% elseif technologie.slug == 'cache' %}
-
-        <h2>Cache HTTP</h2>
-
-        <p>
-            Le cache HTTP permet de conserver certaines réponses
-            pendant une durée définie afin d'améliorer les performances.
-        </p>
-
-        <pre><code>#[Cache(smaxage: 3600)]</code></pre>
-
-        <p>
-            Une réponse peut ainsi être conservée pendant une heure
-            avant d'être recalculée.
-        </p>
-
-    {% endif %}
-
-    <p>
-        <a href="{{ path('app_technologies') }}">
-            ← Retour aux technologies
-        </a>
+    <p class="retour">
+        <a href="{{ path('app_technologies') }}">← Retour à la liste</a>
     </p>
 
 </article>

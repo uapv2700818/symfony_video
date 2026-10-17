@@ -34,6 +34,11 @@ class MessageController extends AbstractController
                 new MessageEnvoye($message->getContenu())
             );
 
+            $this->addFlash(
+                'success',
+                'Message enregistré en base. Une copie a été écrite dans var/messages.log par Messenger.'
+            );
+
             return $this->redirectToRoute('app_message');
         }
 

@@ -1,30 +1,38 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Souvenirs.dev{% endblock %}
+{% block title %}Accueil — Découverte Symfony{% endblock %}
 
 {% block body %}
 
 <section class="accueil">
 
-    <p class="sur-titre">SOUVENIRS.DEV</p>
+    <p class="sur-titre">DÉMO SYMFONY</p>
 
-    <h1>Quand le Web était encore jeune...</h1>
+    <h1>Un projet pour voir le framework en pratique</h1>
 
     <p>
-        Asseyez-vous les enfants.
-        Aujourd'hui, je vais vous raconter comment nous développions
-        des applications Web à mon époque.
+        Ce site n’est pas une documentation officielle : c’est une application
+        minimale où chaque page illustre un morceau de Symfony tel qu’on
+        l’utilise vraiment dans le code (fichiers dans <code>src/</code> et
+        <code>templates/</code>).
     </p>
 
     <p>
-        Vous connaissez Symfony ?
-        Pour vous, c'est peut-être une vieille technologie.
-        Pour nous, c'était déjà une manière moderne de construire
-        des applications Web.
+        Vous y trouverez du routing par attributs, des entités Doctrine,
+        un formulaire, Messenger (traitement asynchrone simulé via un log),
+        Twig, Stimulus avec AssetMapper, et le profiler en environnement
+        <code>dev</code>.
+    </p>
+
+    <p class="astuce">
+        Le menu <a href="{{ path('app_histoire') }}">Parcours</a> décrit
+        l’architecture de ce dépôt.
+        <a href="{{ path('app_technologies') }}">Technologies</a> détaille
+        chaque composant avec des extraits du projet.
     </p>
 
     <a class="bouton" href="{{ path('app_histoire') }}">
-        Écouter mon histoire
+        Voir le parcours du projet
     </a>
 
 </section>
