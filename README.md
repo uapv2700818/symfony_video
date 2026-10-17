@@ -51,7 +51,7 @@ php -S 127.0.0.1:8000 -t public/
 URL utiles :
 
 - http://127.0.0.1:8000/ → redirige vers `/home`
-- `/histoire` (menu « Parcours » en version explicative) — vue d’ensemble du projet
+- `/histoire` (menu « Parcours » sur `main`) — vue d’ensemble du projet
 - `/technologies` — fiches des composants
 - `/message` — formulaire (Form + Doctrine + Messenger)
 

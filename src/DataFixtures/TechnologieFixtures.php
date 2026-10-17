@@ -27,7 +27,7 @@ class TechnologieFixtures extends Fixture
                 'nom' => 'Doctrine',
                 'slug' => 'doctrine',
                 'description' => 'Tables SQL vues comme des classes PHP (entités).',
-                'contenu' => "Technologie et Message sont des entités dans src/Entity/, avec attributs ORM sur les propriétés. TechnologieController récupère la liste via getRepository(Technologie::class)->findAll() ; la fiche détail utilise findOneBy(['slug' => \$slug]).\n\nLe formulaire /message persist un Message après validation — toujours via EntityManagerInterface, sans SQL écrit à la main dans ce projet.\n\nLes textes des fiches Technologies viennent de TechnologieFixtures : après un git checkout demo/papy ou demo/explicative, relancez doctrine:fixtures:load, sinon vous gardez l’ancien ton en base.",
+                'contenu' => "Technologie et Message sont des entités dans src/Entity/, avec attributs ORM sur les propriétés. TechnologieController récupère la liste via getRepository(Technologie::class)->findAll() ; la fiche détail utilise findOneBy(['slug' => \$slug]).\n\nLe formulaire /message persist un Message après validation — toujours via EntityManagerInterface, sans SQL écrit à la main dans ce projet.\n\nLes textes des fiches Technologies viennent de TechnologieFixtures : après un git checkout demo/papy ou main, relancez doctrine:fixtures:load, sinon vous gardez l’ancien ton en base.",
             ],
             [
                 'nom' => 'Formulaires',
