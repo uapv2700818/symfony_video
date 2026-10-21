@@ -3,28 +3,36 @@ services:
     build: .
     volumes:
       - .:/app
-    working_dir: /app
+      - vendor:/app/vendor
     ports:
       - "8000:8000"
-    command: php -S 0.0.0.0:8000 -t public/
     depends_on:
-      - database
+      database:
+        condition: service_healthy
+      mailer:
+        condition: service_started
+    environment:
+      DATABASE_URL: "mysql://root:root@database:3306/symfony_video?serverVersion=mariadb-11.4.0&charset=utf8mb4"
+      MAILER_DSN: "smtp://mailer:1025"
 
   database:
-    image: mariadb:latest
-    ports:
-      - "3306:3306"
+    image: mariadb:11.4
     environment:
       MARIADB_ROOT_PASSWORD: root
       MARIADB_DATABASE: symfony_video
     volumes:
       - db-data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "healthcheck.sh", "--connect", "--innodb_initialized"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
 
   mailer:
     image: axllent/mailpit
     ports:
-      - "1025:1025"
       - "8025:8025"
 
 volumes:
   db-data:
+  vendor:
